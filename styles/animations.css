@@ -1,4 +1,4 @@
-@keyframes pulse {
+@keyframes scale-up {
   from {
     transform: scale(1);
   }
@@ -8,7 +8,7 @@
   }
 }
 
-@keyframes sparks {
+@keyframes fill-in {
   from {
     fill: transparent;
   }
