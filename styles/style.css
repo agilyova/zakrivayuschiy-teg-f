@@ -1,16 +1,333 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
 .page {
+  padding: var(--spacing-section) 0;
+  color: var(--color-text-base);
+  font-family: var(--font-base), sans-serif;
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-size-m);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+}
+
+.page:has(.modal[open]) {
+  overflow: hidden;
+}
+
+.page__item {
+  margin: 0 auto;
+  inline-size: var(--inline-size-page-item);
+}
+
+.header {
+  margin-block-end: var(--spacing-section);
+  border: var(--border-base);
+  padding: var(--spacing-header) 0;
+  text-align: center;
+  background-color: var(--color-background-base);
+}
+
+.header__logo {
+  display: inline-block;
+  margin-block-end: 20px;
+  font-family: var(--font-accent), sans-serif;
+  font-size: var(--font-size-header-logo);
+  line-height: var(--line-height-size-s);
+  text-transform: uppercase;
+}
+
+.header__title {
+  font-family: var(--font-accent), sans-serif;
+  font-weight: inherit;
+  font-size: var(--font-size-header-title);
+  line-height: var(--line-height-size-s);
+  text-transform: uppercase;
+}
+
+.button {
+  position: relative;
+  border: var(--border-base);
+  font-family: var(--font-accent), sans-serif;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-size-xs);
+  background-color: var(--color-button-background);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 0 var(--color-button-shadow);
+  outline: none;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  color: var(--color-button-text-hover);
+  background-color: var(--color-button-background-hover);
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+  mix-blend-mode: difference;
+}
+
+.button:hover::after {
+  transform: scaleX(1);
+}
+
+.card {
+  margin-block-end: 50px;
+  border: var(--border-base);
+  background-color: var(--color-card-background);
+}
+
+.card__title {
+  padding: 5px 10px;
+  font-weight: var(--font-weight-bold);
+  font-size: inherit;
+}
+
+.card__image-container {
+  position: relative;
+  border-block-start: var(--border-base);
+  border-block-end: var(--border-base);
+}
+
+.card__image {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.card__image_type_sepia {
+  filter: sepia(80%);
+}
+
+.card__image_type_bright {
+  filter: brightness(200%);
+}
+
+.card__image_type_saturate {
+  filter: saturate(200%);
+}
+
+.card__image_type_monochrome {
+  filter: grayscale(80%);
+}
+
+.card__image_type_hue {
+  filter: hue-rotate(90deg);
+}
+
+.card__image_type_invert {
+  filter: invert(100%);
+}
+
+.card__image_type_hue-blur {
+  filter: hue-rotate(45deg) blur(2px);
+}
+
+.card__label {
+  position: absolute;
+  top: var(--spacing-card);
+  right: var(--spacing-card);
+  color: var(--color-label);
+  font-family: var(--font-accent), sans-serif;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-size-s);
+  text-transform: uppercase;
+  text-shadow:
+    -1px 0 var(--color-label-stroke),
+    0 1px var(--color-label-stroke),
+    1px 0 var(--color-label-stroke),
+    0 -1px var(--color-label-stroke);
+  mix-blend-mode: hard-light;
+}
+
+@supports (
+  (text-stroke: 1px var(--color-label-stroke)) or
+    (-webkit-text-stroke: 1px var(--color-label-stroke))
+) {
+  .card__label {
+    -webkit-text-stroke: 1px var(--color-label-stroke);
+    text-stroke: 1px var(--color-label-stroke);
+    text-shadow: none;
+  }
+}
+
+.card__content {
+  padding: var(--spacing-card);
+}
+
+.card__paragraph {
+  margin-bottom: var(--spacing-card);
+  font-weight: var(--font-weight-medium);
+}
+
+.card__like-group {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 7px;
+}
+
+.card__icon-button {
+  border: none;
+  padding: 0;
+  outline: 2px solid rgba(0 0 0 /0);
+  outline-offset: 2px;
+  background-color: transparent;
+  transition: outline-color 0.3s ease;
+  cursor: pointer;
+}
+
+.card__icon-button:focus-visible {
+  outline-color: rgba(0 0 0 /1);
+}
+
+.card__like-button {
+  min-width: 130px;
+  padding: 10.5px 10px;
+}
+
+.footer__save-button {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 18px 20px;
+  min-inline-size: 306px;
+}
+
+.floppy-icon {
+  display: block;
+  margin: 0 auto;
+  inline-size: 28px;
+  aspect-ratio: 1 / 1;
+}
+
+.modal {
+  border: var(--border-base);
+  padding: 30px 40px;
+  font-family: var(--font-accent), sans-serif;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-size-l);
+  text-transform: uppercase;
+  inline-size: 341px;
+}
+
+.modal::backdrop {
+  background-color: rgba(0 0 0 /0.75);
+}
+
+.modal__text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-block-end: 30px;
+}
+
+.modal__floppy-icon {
+  flex-shrink: 0;
+  inline-size: 39px;
+  aspect-ratio: 1 / 1;
+}
+
+.modal__button {
+  padding: 10.5px;
+  text-transform: uppercase;
+  inline-size: 100%;
+}
+
+.sparks {
+  fill: transparent;
+}
+
+.contour {
+  transition: fill 0.1s linear;
+}
+
+.core {
+  transition: fill 0.3s 0.03s linear;
+}
+
+.main-body {
+  transition: fill 0.3s linear;
+}
+
+.heart {
+  transform-origin: center;
+}
+
+.like-icon {
+  display: block;
+}
+
+.like-icon:hover .core {
+  fill: var(--color-heart-core-hover);
+  transition-delay: 0s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--color-heart-main-body-hover);
+  transition-delay: 0.05s;
+}
+
+.like-icon:active .core {
+  fill: var(--color-heart-core-active);
+  transition-delay: 0s;
+}
+
+.like-icon:active .main-body {
+  fill: var(--color-heart-main-body-active);
+  transition-delay: 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--color-heart-core-isliked);
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--color-heart-main-body-isliked);
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--color-heart-contour-isliked);
+}
+
+.like-icon.is-liked .heart {
+  animation: pulse 0.3s ease-in 0.1s;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks 0.3s ease-in 0.3s;
+}
+
+@media (width >= 1024px) {
+  .header {
+    margin-block-end: 96px;
+  }
+
+  .footer__save-button {
+    flex-direction: initial;
+    align-items: center;
+    padding: 15px 20px;
+  }
+
+  .floppy-icon {
+    inline-size: 21px;
+  }
+
+  .modal {
+    inline-size: 353px;
+  }
 }

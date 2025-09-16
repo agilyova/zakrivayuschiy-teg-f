@@ -1,1 +1,69 @@
-/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --font-base: 'Inter-Variable';
+  --font-accent: 'PressStart2P';
+
+  --font-size-xs: 14px;
+  --font-size-s: 18px;
+  --font-size-header-logo: clamp(3.063rem, 1.502vw + 2.71rem, 4.063rem);
+  --font-size-header-title: clamp(0.875rem, 0.845vw + 0.677rem, 1.438rem);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 410;
+  --font-weight-bold: 715;
+
+  --line-height-size-xs: 0.9;
+  --line-height-size-s: 1;
+  --line-height-size-m: 1.166;
+  --line-height-size-l: 1.5;
+
+  --inline-size-page-item: clamp(23.438rem, 30.516vw + 16.285rem, 43.75rem);
+
+  --background-image:
+    repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+
+  --border-base: 2px solid var(--color-contrast);
+
+  --spacing-card: 25px;
+  --spacing-section: 100px;
+  --spacing-header: clamp(7.5rem, 0.939vw + 7.28rem, 8.125rem);
+
+  /*Палитра*/
+  --color-base: #fff;
+  --color-contrast: #000;
+  --color-accent: #f00;
+
+  /*Семантические цвета*/
+  --color-text-base: var(--color-contrast);
+  --color-background-base: var(--color-base);
+
+  /*Лейбл*/
+  --color-label: rgba(0 0 0 /0.5);
+  --color-label-stroke: rgba(256 256 256 /0.5);
+
+  /*Карточка*/
+  --color-card-background: var(--color-base);
+  --color-card-title: var(--color-contrast);
+  --color-card-text: var(--color-contrast);
+
+  /*Кнопка*/
+  --color-button-background: var(--color-base);
+  --color-button-shadow: var(--color-contrast);
+  --color-button-text-hover: var(--color-base);
+  --color-button-background-hover: var(--color-base);
+
+  /*Сердце*/
+  --color-heart-contour-base: var(--color-contrast);
+  --color-heart-contour-isliked: var(--color-accent);
+
+  --color-heart-core-hover: var(--color-contrast);
+  --color-heart-core-active: var(--color-accent);
+  --color-heart-core-isliked: var(--color-accent);
+
+  --color-heart-main-body-hover: var(--color-contrast);
+  --color-heart-main-body-active: var(--color-accent);
+  --color-heart-main-body-isliked: var(--color-accent);
+
+  --color-heart-sparks-isliked: var(--color-accent);
+}
