@@ -2,7 +2,7 @@
   padding: var(--spacing-section) 0;
   color: var(--color-text-base);
   font-family: var(--font-base), sans-serif;
-  font-weight: var(--font-weight-regular);
+  font-variation-settings: 'wght' var(--font-weight-regular);
   font-size: var(--font-size-s);
   line-height: var(--line-height-size-m);
   background-image: var(--background-image);
@@ -90,7 +90,7 @@
 
 .card__title {
   padding: 5px 10px;
-  font-weight: var(--font-weight-bold);
+  font-variation-settings: 'wght' var(--font-weight-bold);
   font-size: inherit;
 }
 
@@ -170,7 +170,7 @@
 
 .card__paragraph {
   margin-bottom: var(--spacing-card);
-  font-weight: var(--font-weight-medium);
+  font-variation-settings: 'wght' var(--font-weight-medium);
 }
 
 .card__like-group {
